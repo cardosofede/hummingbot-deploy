@@ -14,27 +14,18 @@ Welcome to the Hummingbot Deploy project. This guide will walk you through the s
    cd hummingbot-deploy
    ```
 
-2. **Configure the .m file:**
-   - Locate the `.env` file in the repository.
-   - Edit the `.env` file to update the bots path to reflect the path where your project is located. This path is crucial as it maps the backend API functionalities to your host machine.
-
-3. **Pull the Docker image:**
-   ```bash
-   docker pull dardonacci/hummingbot
-   ```
-
-4. **API Keys and Credentials:**
+2. **API Keys and Credentials:**
    - Create API keys with a hummingbot instance, the password of the instance should be "a" to work with the current setup, in future versions this will be all handled by the dashboard.
    - Navigate to the `bots_credentials/master_account` directory.
    - Place your YAML files with the required API keys and credentials in this directory.
 
 ## Running the Application
 
-1. **Start the application:**
-   ```bash
-   docker-compose up -d
-   ```
-
+1. **Start and configure the Application**
+   - Run the following command to download and start the app.
+   - ```bash
+     bash setup.sh
+     ```
 2. **Access the dashboard:**
    - Open your web browser and go to `localhost:8501`.
 
