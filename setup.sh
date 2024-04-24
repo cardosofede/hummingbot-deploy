@@ -10,4 +10,4 @@ echo "CONFIG_PASSWORD=a" > .env
 echo "BOTS_PATH=$(pwd)" >> .env
 
 # Running docker-compose in detached mode
-docker-compose up -d
+docker compose up -d
