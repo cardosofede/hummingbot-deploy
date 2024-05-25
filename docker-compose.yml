@@ -2,20 +2,16 @@ version: "3.9"
 
 services:
   dashboard:
-    container_name: dashboard
     image: dardonacci/dashboard:latest
     ports:
-      - "8501:8501"
+      - "127.0.0.1:8502:8501"
     environment:
         - BACKEND_API_HOST=backend-api
         - BACKEND_API_PORT=8000
-    networks:
-        - emqx-bridge
   backend-api:
-    container_name: backend-api
     image: dardonacci/backend-api:latest
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     volumes:
       - ./bots/archived:/backend-api/bots/archived
       - ./bots/conf:/backend-api/bots/conf
@@ -29,15 +25,12 @@ services:
     environment:
       - BROKER_HOST=emqx
       - BROKER_PORT=1883
-    networks:
-      - emqx-bridge
   emqx:
-    container_name: hummingbot-broker
     image: emqx:5
     restart: unless-stopped
     environment:
       - EMQX_NAME=emqx
-      - EMQX_HOST=node1.emqx.local
+      - EMQX_HOST=0.0.0.0
       - EMQX_CLUSTER__DISCOVERY_STRATEGY=static
       - EMQX_CLUSTER__STATIC__SEEDS=[emqx@node1.emqx.local]
       - EMQX_LOADED_PLUGINS="emqx_recon,emqx_retainer,emqx_management,emqx_dashboard"
@@ -46,26 +39,18 @@ services:
       - emqx-log:/opt/emqx/log
       - emqx-etc:/opt/emqx/etc
     ports:
-      - "1883:1883"  # mqtt:tcp
-      - "8883:8883"  # mqtt:tcp:ssl
-      - "8083:8083"  # mqtt:ws
-      - "8084:8084"  # mqtt:ws:ssl
-      - "8081:8081"  # http:management
-      - "18083:18083"  # http:dashboard
-      - "61613:61613"  # web-stomp gateway
-    networks:
-      emqx-bridge:
-        aliases:
-          - node1.emqx.local
+      - "127.0.0.1:1883:1883"  # mqtt:tcp
+      - "127.0.0.1:8883:8883"  # mqtt:tcp:ssl
+      - "127.0.0.1:8083:8083"  # mqtt:ws
+      - "127.0.0.1:8084:8084"  # mqtt:ws:ssl
+      - "127.0.0.1:8081:8081"  # http:management
+      - "127.0.0.1:18083:18083"  # http:dashboard
+      - "127.0.0.1:61613:61613"  # web-stomp gateway
     healthcheck:
       test: [ "CMD", "/opt/emqx/bin/emqx_ctl", "status" ]
       interval: 5s
       timeout: 25s
       retries: 5
-
-networks:
-  emqx-bridge:
-    driver: bridge
 
 volumes:
   emqx-data: { }
