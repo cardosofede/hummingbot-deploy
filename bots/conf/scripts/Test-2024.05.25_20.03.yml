@@ -1,0 +1,7 @@
+candles_config: []
+config_update_interval: 10
+controllers_config:
+- binance_matic_3.2.yml
+markets: {}
+script_file_name: v2_with_controllers.py
+time_to_cash_out: null
