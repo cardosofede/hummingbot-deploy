@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # Pulling the required Docker images
-docker pull dardonacci/hummingbot
-docker pull dardonacci/backend-api
-docker pull dardonacci/dashboard
+docker compose pull
 
 # Creating .env file with the required environment variables
 echo "CONFIG_PASSWORD=a" > .env
