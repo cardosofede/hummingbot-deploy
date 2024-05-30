@@ -14,11 +14,6 @@ Welcome to the Hummingbot Deploy project. This guide will walk you through the s
    cd hummingbot-deploy
    ```
 
-2. **API Keys and Credentials:**
-   - Create API keys with a hummingbot instance, the password of the instance should be "a" to work with the current setup, in future versions this will be all handled by the dashboard.
-   - Navigate to the `bots_credentials/master_account` directory.
-   - Place your YAML files with the required API keys and credentials in this directory.
-
 ## Running the Application
 
 1. **Start and configure the Application**
@@ -29,20 +24,25 @@ Welcome to the Hummingbot Deploy project. This guide will walk you through the s
 2. **Access the dashboard:**
    - Open your web browser and go to `localhost:8501`.
 
-3. **Create a config for D-Man Maker V2**
-   - Go to the tab D-Man Maker V2 and create a new configuration. Soon will be released a video explaining how the strategy works.
+3. **API Keys and Credentials:**
+   - Go to the credentials page
+   - You add credentials to the master account by picking the exchange and adding the API key and secret. This will encrypt the keys and store them in the master account folder.
+   - If you are managing multiple accounts you can create a new one and start adding new credentials there.
 
-4. **Deploy the configuration**
+4. **Create a config for PMM Simple**
+   - Go to the tab PMM Simple and create a new configuration. Soon will be released a video explaining how the strategy works.
+
+5. **Deploy the configuration**
    - Go to the Deploy tab, select a name for your bot, the image dardonacci/hummingbot:latest and the configuration you just created.
    - Press the button to create a new instance.
 
-5. **Check the status of the bot**
+6. **Check the status of the bot**
    - Go to the Instances tab and check the status of the bot.
      - If it's not available is because the bot is starting, wait a few seconds and refresh the page.
      - If it's running, you can check the performance of it in the graph, refresh to see the latest data.
      - If it's stopped, probably the bot had an error, you can check the logs in the container to understand what happened.
 
-5. **[Optional] Check the Backend API**
+7. **[Optional] Check the Backend API**
    -  Open your web browser and go to `localhost:8000/docs`.
 
 ## Dashboard Functionalities
