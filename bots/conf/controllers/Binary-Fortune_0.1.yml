@@ -1,0 +1,15 @@
+buy_levels_targets_amount:
+- - 0.003
+  - 10
+controller_name: xemm_multiple_levels
+controller_type: generic
+id: Binary-Fortune_0.1
+maker_connector: kucoin
+maker_trading_pair: LBR-USDT
+max_profitability: 0.01
+min_profitability: 0.002
+sell_levels_targets_amount:
+- - 0.003
+  - 10
+taker_connector: okx
+taker_trading_pair: LBR-USDT
