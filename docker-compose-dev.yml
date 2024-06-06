@@ -15,12 +15,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./bots/archived:/backend-api/bots/archived
-      - ./bots/conf:/backend-api/bots/conf
-      - ./bots/credentials:/backend-api/bots/credentials
-      - ./bots/instances:/backend-api/bots/instances
-      - ./bots/scripts:/backend-api/bots/scripts
-      - ./bots/controllers:/backend-api/bots/controllers
+      - ./bots:/backend-api/bots
       - /var/run/docker.sock:/var/run/docker.sock
     env_file:
       - .env
